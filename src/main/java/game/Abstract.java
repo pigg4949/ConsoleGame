@@ -1,4 +1,6 @@
 package game;
 
-public class Abstract {
+abstract class abstractStage {
+    abstract void stageEnd();
+    abstract void stageStart();
 }
