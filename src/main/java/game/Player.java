@@ -65,7 +65,7 @@ public class Player {
     public String getPartnerName() {
         return partnerName;
     }
-
+// 확인용 주석 플레이어 파일
     public void setPartnerName(String partnerName) {
         this.partnerName = partnerName;
     }
