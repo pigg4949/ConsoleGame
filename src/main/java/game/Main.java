@@ -8,10 +8,13 @@ public class Main {
         gameManager.run();
     }
 }
+
+
 // 성별 받기 (1.남, 2.여)
 //        1,2  가 아닌 값을 받았을 때 다시 선택
 
 // 이름 받기
+
 // 정규식을 사용 이상한 이름일 때 다시 받기
 
 // 성별과 이름이 DB에 있으면 전에 깼던 스테이지 스킵 여부 물어봄. (maven, MySQL 사용)
@@ -31,9 +34,11 @@ public class Main {
 // 호감도로 스테이지2 성공 or 실패 -> 실패엔딩보여주기(실패, 엔딩클래스 사용)
 // 게임 종료(항상), 다시 시작(스테이지2)(항상), 다음 스테이지가기(성공)
 // ===================================솔비================================================
-// [main에서 사용해야하는 것들]
+// [main(gameManager)에서 사용해야하는 것들]
+/*
 Stage2 stage = new Stage2(playerName, gender, partnerName, scanner);
 Stage2.Stage2Result result = stage.play(affection);
+*/
 // affection = result.affection;
 // result.specialRoute, result.stage2Success도 다음 스테이지/엔딩/랭킹 등에 반드시 연동!
 
