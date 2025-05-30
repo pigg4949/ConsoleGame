@@ -1,4 +1,4 @@
-package game.gwang;
+package game;
 
 import java.util.Scanner;
 

@@ -1,7 +1,5 @@
 package game;
 
-import game.gwang.Player;
-
 import java.util.Scanner;
 
 public class GameManager {
@@ -45,7 +43,7 @@ public class GameManager {
 
     private void runStage2() {
         Stage2 stage2 = new Stage2(player);
-        stage2.stage2;
+        stage2.play();
     }
 
     private void runStage3() {
