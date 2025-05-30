@@ -1,10 +1,8 @@
 package game;
 
-import main.java.game.Stage2;
-
 public class Main {
     public static void main(String[] args) {
-        GameManager gameManager = new GameManager();
+        game.GameManager gameManager = new game.GameManager();
         gameManager.run();
     }
 }
