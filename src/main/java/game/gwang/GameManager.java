@@ -84,17 +84,34 @@ public class GameManager {
     private void runStage1() {
         Stage1 stage = new Stage1(playerName, gender, scanner);
         affection = stage.play(affection);
+        savePlayerData();  // 스테이지1 종료 후 호감도 저장
+
     }
 
     private void runStage2() {
         Stage2 stage = new Stage2(playerName, gender, scanner);
         affection = stage.play(affection);
+        savePlayerData();  // 스테이지2 종료 후 호감도 저장
+
     }
 
     private void runStage3() {
         Stage3 stage = new Stage3(playerName, gender, scanner);
         affection = stage.play(affection);
+        savePlayerData();  // 스테이지3 종료 후 호감도 저장
+
     }
+
+    //hanwon 호감도 저장
+    private void savePlayerData() {
+        DBHandler.savePlayer(playerName, gender, affection);
+    }
+
+    private void showRanking() {
+        RankingManager.showRanking();  // 랭킹 출력
+    }
+
+
 
     private boolean checkStagePass(int passScore, int stageNumber) {
         if (affection < passScore) {

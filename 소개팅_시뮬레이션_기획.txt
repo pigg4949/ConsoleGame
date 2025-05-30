@@ -24,6 +24,19 @@ Stage 3 + 멀티 엔딩 담당 (E) : 스테이지 3 분기형 질문 구현 / �
 
 + 추가 사항 : 데이터 베이스에 플레이어 이름 별 난이도(상대 이성이름(상중하)), 게임 진행 정도(ex. 스테이지2 - 3/5 (60%로 표시?)(이 부분 구현가능한지 모름), 게임 한번 한 기록 저장(배드엔딩-난이도,실패시점,호감도 변화를 나타내주면 멋있을듯! or 해피엔딩-난이도,최종호감도,호감도변화)
 
+DB 내용 (테스트중)
+create database gameDB;
+
+use gameDB;
+
+CREATE TABLE players (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    gender TINYINT NOT NULL,
+    affinity INT DEFAULT 0,
+    stage INT DEFAULT 1
+);
+
 
 --------------------------------------이광주 깃 공부-----------------------------------------------------------
 
