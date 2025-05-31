@@ -1,49 +1,66 @@
 package game;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        game.GameManager gameManager = new game.GameManager();
-        gameManager.run();
+        Scanner sc = new Scanner(System.in);
+
+        // 1) 이름 입력
+        String name;
+        while (true) {
+            System.out.print("이름을 입력하세요(2~10자 한글/영문): ");
+            name = sc.nextLine();
+            if (name.matches("^[가-힣a-zA-Z]{2,10}$")) {
+                break;
+            }
+            System.out.println("이름은 한글 또는 영문 2~10자여야 합니다.");
+        }
+
+        // 2) 성별 입력
+        String gender;
+        while (true) {
+            System.out.print("성별을 선택하세요 (1: 남자, 2: 여자): ");
+            String sel = sc.nextLine();
+            if (sel.equals("1")) {
+                gender = "남";
+                break;
+            } else if (sel.equals("2")) {
+                gender = "여";
+                break;
+            }
+            System.out.println("잘못된 입력입니다. 1 또는 2를 입력하세요.");
+        }
+
+        // 3) Player 생성
+        Player player = new Player(name, gender);
+
+        // 4) Stage1 실행
+        Stage1 stage1 = new Stage1(player, sc);
+        Stage1.Result result1 = stage1.play();
+        // result1.partnerName, result1.affection 반영
+        player.setAffection(result1.affection);
+        String partnerName = result1.partnerName;
+
+        if (player.getAffection() < 20) {
+            System.out.println("\n[GAME OVER] Stage1에서 실패했습니다.");
+            sc.close();
+            return;
+        }
+
+        // 5) Stage2 실행
+        Stage2 stage2 = new Stage2(player, sc, partnerName);
+        stage2.play();
+        if (player.getAffection() < 40) {
+            System.out.println("\n[GAME OVER] Stage2에서 실패했습니다.");
+            sc.close();
+            return;
+        }
+
+        // 6) Stage3 실행
+        Stage3 stage3 = new Stage3(player, sc, partnerName);
+        stage3.play();
+
+        sc.close();
     }
 }
-
-
-// 성별 받기 (1.남, 2.여)
-//        1,2  가 아닌 값을 받았을 때 다시 선택
-
-// 이름 받기
-
-// 정규식을 사용 이상한 이름일 때 다시 받기
-
-// 성별과 이름이 DB에 있으면 전에 깼던 스테이지 스킵 여부 물어봄. (maven, MySQL 사용)
-
-// 플레이어 생성
-//플레이어 객체 생성(이름, 성별)
-
-// 스테이지1 시작 (스테이지1클래스 이용)
-// (이름, 성별) 가지고 스테이지 로직 시작
-// 현재 호감도 / 이름 / 성별을 받아 -> DB와 다음로직에 넘겨줌
-// 호감도로 스테이지1 성공 or 실패 -> 실패엔딩보여주기(실패, 엔딩클래스 사용)
-// 게임 종료(항상), 다시 시작(스테이지1)(항상), 다음 스테이지가기(성공)
-
-// 스테이지2 시작 (스테이지2클래스 이용)
-// (이름, 성별, 호감도) 스테이지 2 로직 시작
-// 현재 호감도 / 이름 / 성별을 받아  -> DB와 다음로직에 넘겨줌
-// 호감도로 스테이지2 성공 or 실패 -> 실패엔딩보여주기(실패, 엔딩클래스 사용)
-// 게임 종료(항상), 다시 시작(스테이지2)(항상), 다음 스테이지가기(성공)
-// ===================================솔비================================================
-// [main(gameManager)에서 사용해야하는 것들]
-/*
-Stage2 stage = new Stage2(playerName, gender, partnerName, scanner);
-Stage2.Stage2Result result = stage.play(affection);
-*/
-// affection = result.affection;
-// result.specialRoute, result.stage2Success도 다음 스테이지/엔딩/랭킹 등에 반드시 연동!
-
-// ====================================솔비===============================================
-
-// 스테이지3 시작
-// (이름, 성별, 호감도) 스테이지 3 로직 시작
-// 현재 호감도 / 이름 / 성별을 받아 -> DB/다음로직에 넘겨줌
-// 호감도로 스테이지3 성공 or 실패 -> 실패엔딩보여주기(실패, 엔딩클래스 사용), 성공엔딩 보여주기(성공, 엔딩클래스 사용)
-// 다시 시작(스테이지3)(항상), 랭킹보여주기(난이도별 클리어랭킹-클리어 시 호감도 순위)

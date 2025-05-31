@@ -1,49 +1,18 @@
 package game;
 
-import java.util.Scanner;
-
 public class Player {
-    private String playerName;
+    private String name;
     private String gender;
-    private int affection = 0;
-    private String partnerName;
+    private int affection;
 
     public Player(String name, String gender) {
-        this.playerName = name;
+        this.name = name;
         this.gender = gender;
+        this.affection = 0;
     }
 
-    public static Player inputPlayer() {
-        Scanner scanner = new Scanner(System.in);
-        String name, gender;
-
-        while (true) {
-            System.out.print("이름을 입력하세요: ");
-            name = scanner.nextLine();
-            if (name.matches("^[가-힣a-zA-Z]{2,10}$")) break;
-            else System.out.println("이름은 한글 또는 영문 2~10자여야 합니다.");
-        }
-
-        while (true) {
-            System.out.print("성별을 선택하세요 (1: 남자, 2: 여자): ");
-            String input = scanner.nextLine();
-            if (input.equals("1")) {
-                gender = "남";
-                break;
-            } else if (input.equals("2")) {
-                gender = "여";
-                break;
-            } else {
-                System.out.println("잘못된 입력입니다.");
-            }
-        }
-
-        return new Player(name, gender);
-    }
-
-    // === Getter & Setter ===
-    public String getPlayerName() {
-        return playerName;
+    public String getName() {
+        return name;
     }
 
     public String getGender() {
@@ -54,19 +23,11 @@ public class Player {
         return affection;
     }
 
-    public void increaseAffection(int amount) {
-        affection += amount;
+    public void setAffection(int affection) {
+        this.affection = affection;
     }
 
-    public void resetAffection() {
-        affection = 0;
-    }
-
-    public String getPartnerName() {
-        return partnerName;
-    }
-// 확인용 주석 플레이어 파일
-    public void setPartnerName(String partnerName) {
-        this.partnerName = partnerName;
+    public void addAffection(int delta) {
+        this.affection += delta;
     }
 }
