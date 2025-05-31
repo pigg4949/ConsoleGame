@@ -69,8 +69,11 @@ public class Stage1 {
             System.out.println("2) 무난한 스타일이에요.        (호감도+0)");
             System.out.println("3) 대충 입었어요. 성격이 중요하죠. (호감도-5)");
             sel = getInput(1, 3);
-            if (sel == 1) affection += 5;
-            else if (sel == 3) affection -= 5;
+            switch (sel) {
+                case 1 -> affection += 5;
+                case 2 -> { /* 변화 없음 */ }
+                case 3 -> affection -= 5;
+            }
             player.setAffection(affection);
             System.out.println("현재 호감도: " + affection + "\n");
 
@@ -80,8 +83,11 @@ public class Stage1 {
             System.out.println("2) 가끔 연락해요.    (호감도+0)");
             System.out.println("3) 거의 연락 안 해요. (호감도-5)");
             sel = getInput(1, 3);
-            if (sel == 1) affection += 5;
-            else if (sel == 3) affection -= 5;
+            switch (sel) {
+                case 1 -> affection += 5;
+                case 2 -> { /* 변화 없음 */ }
+                case 3 -> affection -= 5;
+            }
             player.setAffection(affection);
             System.out.println("현재 호감도: " + affection + "\n");
 
@@ -91,8 +97,11 @@ public class Stage1 {
             System.out.println("2) 넷플릭스 봐요.         (호감도+0)");
             System.out.println("3) 그냥 집에만 있어요.    (호감도-5)");
             sel = getInput(1, 3);
-            if (sel == 1) affection += 5;
-            else if (sel == 3) affection -= 5;
+            switch (sel) {
+                case 1 -> affection += 5;
+                case 2 -> { /* 변화 없음 */ }
+                case 3 -> affection -= 5;
+            }
             player.setAffection(affection);
             System.out.println("현재 호감도: " + affection + "\n");
 
@@ -102,8 +111,11 @@ public class Stage1 {
             System.out.println("2) 별생각 없었어요. (호감도+0)");
             System.out.println("3) 나오기 싫었어요.  (호감도-5)");
             sel = getInput(1, 3);
-            if (sel == 1) affection += 5;
-            else if (sel == 3) affection -= 5;
+            switch (sel) {
+                case 1 -> affection += 5;
+                case 2 -> { /* 변화 없음 */ }
+                case 3 -> affection -= 5;
+            }
             player.setAffection(affection);
             System.out.println("현재 호감도: " + affection + "\n");
 
@@ -113,8 +125,11 @@ public class Stage1 {
             System.out.println("2) 행동으로 보여줘요. (호감도+0)");
             System.out.println("3) 잘 못해요.       (호감도-5)");
             sel = getInput(1, 3);
-            if (sel == 1) affection += 5;
-            else if (sel == 3) affection -= 5;
+            switch (sel) {
+                case 1 -> affection += 5;
+                case 2 -> { /* 변화 없음 */ }
+                case 3 -> affection -= 5;
+            }
             player.setAffection(affection);
             System.out.println("최종 호감도: " + affection + "\n");
 
@@ -169,8 +184,11 @@ public class Stage1 {
             System.out.println("💁‍♀️b) 음… 옷에 크게 신경쓰는 스타일은 아니에요.\n\t⚙️ 개성있는 스타일로 호불호가 갈릴 수 있으나, 무난하게 넘어간듯 하다 (호감도+0)");
             System.out.println("💁‍♀️c) 저 오늘 대충 입었어요. 옷 보다는 성격이 중요하잖아요.\n\t⚙️맞는말이다. 처 맞는말 (호감도-5)");
             sel = getInput(1, 3);
-            if (sel == 1) affection += 5;
-            else if (sel == 3) affection -= 5;
+            switch (sel) {
+                case 1 -> affection += 5;
+                case 2 -> { /* 변화 없음 */ }
+                case 3 -> affection -= 5;
+            }
             player.setAffection(affection);
             System.out.println("현재 호감도: " + affection + "\n");
 
@@ -180,8 +198,11 @@ public class Stage1 {
             System.out.println("💁‍♀️b) 가끔? 연락 안 해도 편한 친구라서 저도 이번에 오랜만에 연락받았어요\n\t⚙️ 이해 가능 범주, 성향에 따라 거리감이 생길 수 있다 (호감도+0)");
             System.out.println("💁‍♀️c) 귀찮아서 연락 잘 안해요.\n\t⚙️무관심 및 귀차니즘 성향으로 비춰진듯 하다. (호감도-5)");
             sel = getInput(1, 3);
-            if (sel == 1) affection += 5;
-            else if (sel == 3) affection -= 5;
+            switch (sel) {
+                case 1 -> affection += 5;
+                case 2 -> { /* 변화 없음 */ }
+                case 3 -> affection -= 5;
+            }
             player.setAffection(affection);
             System.out.println("현재 호감도: " + affection + "\n");
 
@@ -191,8 +212,11 @@ public class Stage1 {
             System.out.println("💁‍♀️b) 쇼파에 파뭍혀서 넷플릭스 보면서 편하게 보내는 편이에요.\n\t⚙️ 현실적이고 평범하다 (호감도+0)");
             System.out.println("💁‍♀️c) 집 가면 아무것도 하기 싫어요.\n\t⚙️ 상대방까지 무기력하게 만든다 (호감도-5)");
             sel = getInput(1, 3);
-            if (sel == 1) affection += 5;
-            else if (sel == 3) affection -= 5;
+            switch (sel) {
+                case 1 -> affection += 5;
+                case 2 -> { /* 변화 없음 */ }
+                case 3 -> affection -= 5;
+            }
             player.setAffection(affection);
             System.out.println("현재 호감도: " + affection + "\n");
 
@@ -202,8 +226,11 @@ public class Stage1 {
             System.out.println("💁‍♀️b) 친구 부탁드로 나온거긴 한데 큰 기대는 안했어요.\n\t⚙️ 그럴 수 있다고 생각하는 듯 하다. (호감도+0)");
             System.out.println("💁‍♀️c) 어색한거 너무 싫어서 나오기 싫었어요.\n\t⚙️ 상대방 속마음이 들리는 듯 하다. (호감도-5)");
             sel = getInput(1, 3);
-            if (sel == 1) affection += 5;
-            else if (sel == 3) affection -= 5;
+            switch (sel) {
+                case 1 -> affection += 5;
+                case 2 -> { /* 변화 없음 */ }
+                case 3 -> affection -= 5;
+            }
             player.setAffection(affection);
             System.out.println("현재 호감도: " + affection + "\n");
 
@@ -213,8 +240,11 @@ public class Stage1 {
             System.out.println("💁‍♀️b) 표현보다는 행동으로 보여주는 편이에요. 말보단 행동이죠!\n\t⚙️ 성향에 따라 다를 듯 하다. 매력/애매함의 공존 (호감도+0)");
             System.out.println("💁‍♀️c) 그런거 잘 못해요 무뚝뚝하다는 말 많이 듣는편이기도 하고..\n\t⚙️ 시작부터 거리감이 생긴 듯 하다. (호감도-5)");
             sel = getInput(1, 3);
-            if (sel == 1) affection += 5;
-            else if (sel == 3) affection -= 5;
+            switch (sel) {
+                case 1 -> affection += 5;
+                case 2 -> { /* 변화 없음 */ }
+                case 3 -> affection -= 5;
+            }
             player.setAffection(affection);
             System.out.println("최종 호감도: " + affection + "\n");
         }
