@@ -222,100 +222,129 @@ public class Stage3 {
         int input;
 
         // Q1
-        System.out.println("⚙️ 식사를 마친 후 남성이 집까지 데려다 주겠다고 하여 차를 타고 이동한다.");
-        System.out.println("⚙️ 차 내부가 업류 서류로 지저분하다.\n");
-        System.out.println("💁‍♂️) 죄송해요 차 안이 너무 지저분하죠..? 미리 미리 정리를 했어야 했는데 요즘 일이 바빠서 정리할 틈이 없었네요…");
-        System.out.println("💁‍♀️a) 바쁠때는 어쩔 수 없죠~ 저도 그렇거든요");
-        System.out.println("    ⚙️ 상대방이 민망하지 않게 잘 말한 것 같다! (호감도+5)");
-        System.out.println("💁‍♀️b) 제 화장대에 비하면 이정도는 뭐 ㅋㅋㅋㅋㅋ");
-        System.out.println("    ⚙️ 친밀도 상승 / 친구로 남지 않도록 주의하세요 (호감도+0)");
-        System.out.println("💁‍♀️c) 아.. 국산차라 기대도 안했어요");
-        System.out.println("    ⚙️ (끼이이이익) 남자가 급하게 차를 세운다. (호감도-30)");
-        System.out.println("    💁‍♂️) 야!! 내려, 버스타고 가!!");
-        input = getInput(1, 3);
-        switch (input) {
-            case 1 -> player.addAffection(5);
-            case 2 -> { /* 변화 없음 */ }
-            case 3 -> player.addAffection(-30);
-        }
-        System.out.printf("현재 호감도: %d\n\n", player.getAffection());
+        System.out.println("[system]️ 식사를 마친 후 남성이 집까지 데려다 주겠다고 하여 차를 타고 이동한다.");
+        System.out.println("[system]️ 차 내부가 업류 서류로 지저분하다.\n");
+        System.out.println(partnerName + ": 죄송해요 차 안이 너무 지저분하죠..? 미리 미리 정리를 했어야 했는데 요즘 일이 바빠서 정리할 틈이 없었네요…");
+        System.out.println("1. 바쁠때는 어쩔 수 없죠~ 저도 그렇거든요");
+        System.out.println("2. 제 화장대에 비하면 이정도는 뭐 ㅋㅋㅋㅋㅋ");
+        System.out.println("3. 아 국산차라 기대도 안했어요");
 
-        // Q2
-        System.out.println("⚙️ 택시와 오토바이의 콜라보레이션 끼어들기로 인해 접촉 사고 발생 위험!");
-        System.out.println("💁‍♂️) 많이 놀랐죠? 괜찮아요??");
-        System.out.println("💁‍♀️a) 저는 괜찮아요! 다른 사람이었으면 사고 났을텐데 순발력이 좋으시네요!");
-        System.out.println("    ⚙️ 긍정 마인드 어필 성공 (호감도+5)");
-        System.out.println("💁‍♀️b) 한문철 각?");
-        System.out.println("    ⚙️ 친밀도 상승 / 친구로 남지 않도록 주의하세요 (호감도+0)");
-        System.out.println("💁‍♀️c) 자리 바꿔봐요, 저런 @#$들 내가 오늘 도로에서 지워버리고 지옥간다, 말리지마요");
         input = getInput(1, 3);
         switch (input) {
             case 1 -> {
                 player.addAffection(5);
-                System.out.println("    ⚙️ 긍정 마인드 어필 성공 (호감도+5)");
+                System.out.println("[system]️ 상대방이 민망하지 않게 잘 말한 것 같다! (호감도+5)");
             }
-            case 2 -> System.out.println("    ⚙️ 친밀도 상승 / 친구로 남지 않도록 주의하세요 (호감도+0)");
+            case 2 -> System.out.println("[system] 친밀도 상승 / 친구로 남지 않도록 주의하세요 (호감도+0)");
+            case 3 -> {
+                player.addAffection(-30);
+                System.out.println("[system] (끼이이이익) 남자가 급하게 차를 세운다. (호감도-30)");
+                System.out.println(partnerName + ": 야!! 내려, 버스타고 가!!");
+            }
+        }
+        System.out.printf("현재 호감도: %d\n\n", player.getAffection());
+
+        // Q2
+        System.out.println("[system]️ 택시와 오토바이의 콜라보레이션 끼어들기로 인해 접촉 사고 발생 위험!");
+        System.out.println(partnerName + ": 많이 놀랐죠? 괜찮아요??");
+        System.out.println("1. 저는 괜찮아요! 다른 사람이었으면 사고 났을텐데 순발력이 좋으시네요!");
+        System.out.println("2. 한문철 각?");
+        System.out.println("3. 자리 바꿔봐요, 저런 @#$들 내가 오늘 도로에서 지워버리고 지옥간다, 말리지마요");
+        input = getInput(1, 3);
+        switch (input) {
+            case 1 -> {
+                player.addAffection(5);
+                System.out.println("[system] 긍정 마인드 어필 성공 (호감도+5)");
+            }
+            case 2 -> System.out.println("[system] 친밀도 상승 / 친구로 남지 않도록 주의하세요 (호감도+0)");
             case 3 -> {
                 if (rand.nextDouble() < 0.3) {
                     player.addAffection(30);
-                    System.out.println("    ⚙️ [반전매력] 발동 호감도 대폭 상승 (호감도+30)");
+                    System.out.println("[system] [반전매력💕] 발동 호감도 대폭 상승 (호감도+30)");
                 } else {
                     player.addAffection(-5);
-                    System.out.println("    ⚙️ 상대방이 데려다 주는걸 후회합니다. (호감도-5)");
+                    System.out.println("[system]" + partnerName + "이(가) 데려다 주는걸 후회합니다. (호감도-5)");
                 }
             }
         }
         System.out.printf("현재 호감도: %d\n\n", player.getAffection());
 
         // Q3
-        System.out.println("⚙️ 접촉사고는 피했지만 이야기의 흐름이 끊겨버렸다…");
-        System.out.println("💁‍♂️) 혹시 좋아하는 음악 있어요?? 저는 밴드 장르 좋아해요!");
-        System.out.println("💁‍♀️a) 🫢저도 그거 좋아해요!! 우리 그거 들으면서 가요!");
-        System.out.println("    ⚙️ 공감대 형성! (호감도+5)");
-        System.out.println("💁‍♀️b) 밴드 음악은 잘 안들어봐서 모르는데 신나는 음악을 좋아하시나봐요.");
-        System.out.println("    ⚙️ 이야기의 흐름이 끊기지 않게 주의하세요 (호감도+0)");
+        System.out.println("[system]️ 접촉사고는 피했지만 이야기의 흐름이 끊겨버렸다…");
+        System.out.println(partnerName + ": 혹시 좋아하는 음악 있어요?? 저는 밴드 장르 좋아해요!");
+        System.out.println("1. 🫢저도 그거 좋아해요!! 우리 그거 들으면서 가요!");
+        System.out.println("2. 밴드 음악은 잘 안들어봐서 모르는데 신나는 음악을 좋아하시나봐요.");
         System.out.println("💁‍♀️c) 전 시끄러운거 안좋아해요 그냥 조용한게 좋아요");
-        System.out.println("    ⚙️ 상대방이 머쓱 (호감도-5)");
+
         input = getInput(1, 3);
         switch (input) {
-            case 1 -> player.addAffection(5);
-            case 2 -> { /* 변화 없음 */ }
-            case 3 -> player.addAffection(-5);
+            case 1 ->{
+                player.addAffection(5);
+                System.out.println("[system] 공감대 형성! (호감도+5)");
+            }
+            case 2 ->  System.out.println("[system] 이야기의 흐름이 끊기지 않게 주의하세요 (호감도+0)");
+            case 3 -> {
+                player.addAffection(-5);
+                System.out.println("[system] 상대방이 머쓱 (호감도-5)");
+            }
         }
         System.out.printf("현재 호감도: %d\n\n", player.getAffection());
 
         // Q4 분기
-        System.out.println("⚙️ 도착까지 얼마 남지 않았다! 이젠 승부수를 던져야 합니다!");
-        System.out.println("[분기질문]");
-        System.out.println("💁‍♂️) 거의 다와가는것같은데 이 근처 맞죠??");
-        System.out.println("💁‍♀️a) 네, 여기 맞아요. 오늘 정말 감사했어요! 덕분에 즐거웠어요");
-        System.out.println("💁‍♀️b) 네, 여기 맞아요. 오늘 편하게 해주셔서 감사했어요. 사실 긴장을 많이 했는데 덕분에 즐거웠어요.");
-        System.out.println("💁‍♀️c) 네, 맞긴 한데.. 조금만 천천히 가주실 수 있어요? 사실 좀 더 이야기 나누고 싶어서요.");
+        System.out.println("[system]️ 도착까지 얼마 남지 않았다! 이젠 승부수를 던져야 합니다!");
+        System.out.println(partnerName + ": 거의 다와가는것같은데 이 근처 맞죠??");
+        System.out.println("1. 네, 여기 맞아요. 오늘 정말 감사했어요! 덕분에 즐거웠어요");
+        System.out.println("2. 네, 오늘 편하게 해주셔서 감사했어요. 사실 긴장을 많이 했는데 덕분에 즐거웠어요.");
+        System.out.println("3. 네, 맞긴 한데.. 조금만 천천히 가주실 수 있어요? 사실 좀 더 이야기 나누고 싶어서요.");
         input = getInput(1, 3);
         switch (input) {
             case 1 -> {
-                System.out.println("💁‍♀️a1) 로맨스나 코미디 좋아해요!");
-                System.out.println("    ⚙️ 취향 확인! 상대방의 고민이 줄었다. (호감도+5)");
+                System.out.println(partnerName + ": 저도 같은 마음이에요! 다음에 같이 영화보러 가는 거 어때요? 좋아하는 장르 있어요??");
+                System.out.println("1. 로맨스나 코미디 좋아해요!");
                 System.out.println("💁‍♀️a2) 저 좀 잔인하고 무서운 영화 좋아해요!");
-                System.out.println("    ⚙️ 호불호가 갈릴 듯 하다 (호감도-5)");
                 int sub = getInput(1, 2);
-                player.addAffection(sub == 1 ? 5 : -5);
+                switch (sub) {
+                    case 1 -> {
+                        player.addAffection(5);
+                        System.out.println("[system] 취향 확인! 상대방의 고민이 줄었다. (호감도+5)");
+                    }
+                    case 2 -> {
+                        player.addAffection(-5);
+                        System.out.println("[system] 호불호가 갈릴 듯 하다 (호감도-5)");
+                    }
+                }
             }
             case 2 -> {
+                System.out.println(partnerName + ": 오늘 어땠는지 솔직하게 얘기해줄 수 있어요?");
                 System.out.println("💁‍♀️b1) 저희 잘 맞는 것 같아요! 나눈 대화들이 너무 좋았어요.");
-                System.out.println("    ⚙️ 진솔한 소통 (호감도+5)");
                 System.out.println("💁‍♀️b2) 처음엔 어색했는데, 더 알아보고 싶은 마음이에요");
-                System.out.println("    ⚙️ 미묘한 실망감을 느낀 듯 하다. (호감도-5)");
                 int sub = getInput(1, 2);
-                player.addAffection(sub == 1 ? 5 : -5);
+                switch (sub) {
+                    case 1 -> {
+                        player.addAffection(5);
+                        System.out.println("[system] 진솔한 소통 (호감도+5)");
+                    }
+                    case 2 -> {
+                        player.addAffection(-5);
+                        System.out.println("[system] 미묘한 실망감을 느낀 듯 하다. (호감도-5)");
+                    }
+                }
             }
             case 3 -> {
+                System.out.println(partnerName + ": 그럼 조금 더 천천히 갈게요. OO씨의 이상형은 어떤 사람이에요?");
                 System.out.println("💁‍♀️c1) 따뜻하고 배려심 많은 사람이 좋아요, 저도 그렇게 되려고 노력하고 있거든요.");
-                System.out.println("    ⚙️ 상대방이 당신의 성격에 끌립니다. (호감도+5)");
                 System.out.println("💁‍♀️c2) 이상형은 차은우! 세상에나 너무 완벽하지 않나요?");
-                System.out.println("    ⚙️ 남자의 머릿속에 후회가 밀려온다. (호감도-5)");
                 int sub = getInput(1, 2);
-                player.addAffection(sub == 1 ? 5 : -5);
+                switch (sub) {
+                    case 1 -> {
+                        player.addAffection(5);
+                        System.out.println("[system] 상대방이 당신의 성격에 끌립니다. (호감도+5)");
+                    }
+                    case 2 -> {
+                        player.addAffection(-5);
+                        System.out.println("[system] 남자의 머릿속에 후회가 밀려온다. (호감도-5)");
+                    }
+                }
             }
         }
         System.out.printf("최종 호감도: %d\n\n", player.getAffection());
@@ -328,9 +357,9 @@ public class Stage3 {
         } else if (aff < 40) {
             System.out.println("지인 엔딩: 매너는 있었지만 연애는 없었다.");
         } else if (aff < 70) {
-            System.out.println("남사친 엔딩: 좋은 친구로 남고 싶어요.");
+            System.out.println("여사친 엔딩: 좋은 친구로 남고 싶어요.");
         } else {
-            System.out.println("남친 엔딩: 해피 엔딩! 다음 주말에 또 만날래요?");
+            System.out.println("여친 엔딩: 해피 엔딩! 다음 주말에 또 만날래요?");
         }
         System.out.println("=========================\n");
     }
