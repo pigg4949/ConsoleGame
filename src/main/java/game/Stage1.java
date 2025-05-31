@@ -233,9 +233,9 @@ public class Stage1 {
 
             // Q1
             System.out.println(partnerName + ": 사진이랑 똑같으세요. 실제로 보니까 더 인상이 좋네요! 평소에도 스타일에 신경 많이 쓰세요?\n");
-            System.out.println("💁‍♀️a) 감사합니다. 평소엔 좀 편하게 입긴 하는데, 소개팅이니까 나름 신경을 썼어요.\n\t");
-            System.out.println("💁‍♀️b) 음… 옷에 크게 신경쓰는 스타일은 아니에요.\n\t");
-            System.out.println("💁‍♀️c) 저 오늘 대충 입었어요. 옷 보다는 성격이 중요하잖아요.\n\t");
+            System.out.println("1. 감사합니다. 평소엔 좀 편하게 입긴 하는데, 소개팅이니까 나름 신경을 썼어요.\n\t");
+            System.out.println("2. 음… 옷에 크게 신경쓰는 스타일은 아니에요.\n\t");
+            System.out.println("3. 저 오늘 대충 입었어요. 옷 보다는 성격이 중요하잖아요.\n\t");
             sel = getInput(1, 3);
             switch (sel) {
                 case 1 -> {
@@ -257,9 +257,9 @@ public class Stage1 {
 
             // Q2
             System.out.println(partnerName + ": 주선자분이 되게 좋은얘기 많이 해주시던데 평소에 자주 연락하세요??\n");
-            System.out.println("💁‍♀️a) 자주 연락하죠! 거의 매일 연락하는 것 같아요.\n\t");
-            System.out.println("💁‍♀️b) 가끔? 연락 안 해도 편한 친구라서 저도 이번에 오랜만에 연락받았어요\n\t");
-            System.out.println("💁‍♀️c) 귀찮아서 연락 잘 안해요.\n\t");
+            System.out.println("1. 자주 연락하죠! 거의 매일 연락하는 것 같아요.\n\t");
+            System.out.println("2. 가끔? 연락 안 해도 편한 친구라서 저도 이번에 오랜만에 연락받았어요\n\t");
+            System.out.println("3. 귀찮아서 연락 잘 안해요.\n\t");
             sel = getInput(1, 3);
             switch (sel) {
                 case 1 -> {
@@ -281,9 +281,9 @@ public class Stage1 {
 
             // Q3
             System.out.println(partnerName + ": 요즘에 일 끝나면 어떤거 하세요? 퇴근하고 여유가 좀 있으신 편인가요??\n");
-            System.out.println("💁‍♀️a) 요즘 퇴근하고 운동이랑 산책을 하면서 저만의 루틴을 만들고 있어요.\n\t");
-            System.out.println("💁‍♀️b) 쇼파에 파뭍혀서 넷플릭스 보면서 편하게 보내는 편이에요.\n\t");
-            System.out.println("💁‍♀️c) 집 가면 아무것도 하기 싫어요.\n\t");
+            System.out.println("1. 요즘 퇴근하고 운동이랑 산책을 하면서 저만의 루틴을 만들고 있어요.\n\t");
+            System.out.println("2. 쇼파에 파뭍혀서 넷플릭스 보면서 편하게 보내는 편이에요.\n\t");
+            System.out.println("3. 집 가면 아무것도 하기 싫어요.\n\t");
             sel = getInput(1, 3);
             switch (sel) {
                 case 1 -> {
@@ -306,9 +306,9 @@ public class Stage1 {
 
             // Q4
             System.out.println(partnerName + ": 혹시 오늘 나오기 전에 고민 많이 하셨어요?? 소개팅 경험이 좀 있으신가요?\n");
-            System.out.println("💁‍♀️a) 솔직히 살짝 고민했는데, 이런 만남 자체가 좋은 경험이고 실제로 만나니까 나오길 잘 한것 같아요.\n\t");
-            System.out.println("💁‍♀️b) 친구 부탁드로 나온거긴 한데 큰 기대는 안했어요.\n\t");
-            System.out.println("💁‍♀️c) 어색한거 너무 싫어서 나오기 싫었어요.\n\t");
+            System.out.println("1. 솔직히 살짝 고민했는데, 이런 만남 자체가 좋은 경험이고 실제로 만나니까 나오길 잘 한것 같아요.\n\t");
+            System.out.println("2. 친구 부탁드로 나온거긴 한데 큰 기대는 안했어요.\n\t");
+            System.out.println("3. 어색한거 너무 싫어서 나오기 싫었어요.\n\t");
             sel = getInput(1, 3);
             switch (sel) {
                 case 1 -> {
@@ -330,9 +330,9 @@ public class Stage1 {
 
             // Q5
             System.out.println(partnerName + ": 평소 연애할 땐 어떤 스타일이에요?? 표현을 자주 하시나요??\n");
-            System.out.println("💁‍♀️a) 좋아하는 사람한텐 표현을 많이 하려고 해요. 관계를 쌓아가는데 중요한 부분이라고 생각해요\n\t");
-            System.out.println("💁‍♀️b) 표현보다는 행동으로 보여주는 편이에요. 말보단 행동이죠!\n\t");
-            System.out.println("💁‍♀️c) 그런거 잘 못해요 무뚝뚝하다는 말 많이 듣는편이기도 하고..\n\t");
+            System.out.println("1. 좋아하는 사람한텐 표현을 많이 하려고 해요. 관계를 쌓아가는데 중요한 부분이라고 생각해요\n\t");
+            System.out.println("2. 표현보다는 행동으로 보여주는 편이에요. 말보단 행동이죠!\n\t");
+            System.out.println("3. 그런거 잘 못해요 무뚝뚝하다는 말 많이 듣는편이기도 하고..\n\t");
             sel = getInput(1, 3);
             switch (sel) {
                 case 1 -> {

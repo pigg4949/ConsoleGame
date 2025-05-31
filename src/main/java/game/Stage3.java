@@ -274,7 +274,7 @@ public class Stage3 {
         System.out.println(partnerName + ": 혹시 좋아하는 음악 있어요?? 저는 밴드 장르 좋아해요!");
         System.out.println("1. 🫢저도 그거 좋아해요!! 우리 그거 들으면서 가요!");
         System.out.println("2. 밴드 음악은 잘 안들어봐서 모르는데 신나는 음악을 좋아하시나봐요.");
-        System.out.println("💁‍♀️c) 전 시끄러운거 안좋아해요 그냥 조용한게 좋아요");
+        System.out.println("3. 전 시끄러운거 안좋아해요 그냥 조용한게 좋아요");
 
         input = getInput(1, 3);
         switch (input) {
@@ -301,7 +301,7 @@ public class Stage3 {
             case 1 -> {
                 System.out.println(partnerName + ": 저도 같은 마음이에요! 다음에 같이 영화보러 가는 거 어때요? 좋아하는 장르 있어요??");
                 System.out.println("1. 로맨스나 코미디 좋아해요!");
-                System.out.println("💁‍♀️a2) 저 좀 잔인하고 무서운 영화 좋아해요!");
+                System.out.println("2. 저 좀 잔인하고 무서운 영화 좋아해요!");
                 int sub = getInput(1, 2);
                 switch (sub) {
                     case 1 -> {
@@ -316,8 +316,8 @@ public class Stage3 {
             }
             case 2 -> {
                 System.out.println(partnerName + ": 오늘 어땠는지 솔직하게 얘기해줄 수 있어요?");
-                System.out.println("💁‍♀️b1) 저희 잘 맞는 것 같아요! 나눈 대화들이 너무 좋았어요.");
-                System.out.println("💁‍♀️b2) 처음엔 어색했는데, 더 알아보고 싶은 마음이에요");
+                System.out.println("1. 저희 잘 맞는 것 같아요! 나눈 대화들이 너무 좋았어요.");
+                System.out.println("2. 처음엔 어색했는데, 더 알아보고 싶은 마음이에요");
                 int sub = getInput(1, 2);
                 switch (sub) {
                     case 1 -> {
@@ -332,8 +332,8 @@ public class Stage3 {
             }
             case 3 -> {
                 System.out.println(partnerName + ": 그럼 조금 더 천천히 갈게요. OO씨의 이상형은 어떤 사람이에요?");
-                System.out.println("💁‍♀️c1) 따뜻하고 배려심 많은 사람이 좋아요, 저도 그렇게 되려고 노력하고 있거든요.");
-                System.out.println("💁‍♀️c2) 이상형은 차은우! 세상에나 너무 완벽하지 않나요?");
+                System.out.println("1. 따뜻하고 배려심 많은 사람이 좋아요, 저도 그렇게 되려고 노력하고 있거든요.");
+                System.out.println("2. 이상형은 차은우! 세상에나 너무 완벽하지 않나요?");
                 int sub = getInput(1, 2);
                 switch (sub) {
                     case 1 -> {
