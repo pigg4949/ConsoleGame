@@ -1,6 +1,13 @@
 package game;
 
+import util.ColorAsciiUtil;
+import util.SoundUtil;
+import util.color.*;
+
 import java.util.Scanner;
+
+import static util.ColorAsciiUtil.TextColorUtil.printFromResource;
+import static util.ColorAsciiUtil.printStageClear;
 
 public class Stage2 {
     private Player player;
@@ -15,9 +22,38 @@ public class Stage2 {
 
     public void play() {
         System.out.println("\n[Stage2] 두근두근 2번째 데이트\n");
+
         if (player.getGender().equals("남")) {
+            SoundUtil.stopBGM();
+            //sleep(100);
+            SoundUtil.playBGM("Fhigher.mp3");
+            // 컷신 출력 추가
+            if (partnerName.equals("Easy혜")) {
+                var Easy2WomancolorMap = SecondWomanArt.getColorMap(SecondWomanArt.CharacterStyle.EASY_WOMAN);
+                printFromResource("/arts/Fnpc2.txt", Easy2WomancolorMap);
+            } else if (partnerName.equals("조심혜")) {
+                var Normal2WomancolorMap = SecondWomanArt.getColorMap(SecondWomanArt.CharacterStyle.NORMAL_WOMAN);
+                printFromResource("/arts/Fnpc2.txt", Normal2WomancolorMap);
+            } else {
+                var Hard2WomancolorMap = SecondWomanArt.getColorMap(SecondWomanArt.CharacterStyle.HARD_WOMAN);
+                printFromResource("/arts/Fnpc2.txt", Hard2WomancolorMap);
+            }
             playMale();
         } else {
+            SoundUtil.stopBGM();
+            //sleep(100);
+            SoundUtil.playBGM("Mhigher.mp3");
+            // 컷신 출력 추가
+            if (partnerName.equals("남상규")) {
+                var Easy2MancolorMap = SecondManArt.getColorMap(SecondManArt.CharacterStyle.EASY_MAN);
+                printFromResource("/arts/Mnpc2.txt", Easy2MancolorMap);
+            } else if (partnerName.equals("전중안")) {
+                var Normal2MancolorMap = SecondManArt.getColorMap(SecondManArt.CharacterStyle.NORMAL_MAN);
+                printFromResource("/arts/Mnpc2.txt", Normal2MancolorMap);
+            } else {
+                var Hard2MancolorMap = SecondManArt.getColorMap(SecondManArt.CharacterStyle.HARD_MAN);
+                printFromResource("/arts/Mnpc2.txt", Hard2MancolorMap);
+            }
             playFemale();
         }
     }
@@ -26,7 +62,6 @@ public class Stage2 {
 
     private void playMale() {
         int input;
-
         System.out.println("첫 번째 만남 이후 주말 영화 데이트,,,\n");
 
         System.out.println("💃 Q1. 저 영화 좋아하긴 하는데 혼자도 잘 봐요! 혹시 혼영 가능하세요?");
@@ -38,16 +73,22 @@ public class Stage2 {
             case 1 -> {
                 System.out.println("[system] " + partnerName + "은(는) '이 사람 자기랑 영화도 나눠 못 보는 사람일지도…?'라는 생각에 혼란을 느꼈습니다.");
                 System.out.println("[system] 호감도 +5 자기애에는 약하지만 감명받았습니다.\n");
-                player.addAffection(5);
+                sleep(100);
+               SoundUtil.playEffect("pointUp.mp3");
+               player.addAffection(5);
             }
             case 2 -> {
                 System.out.println("[system] " + partnerName + "은(는) 갑작스러운 스킨십 언급에 멘탈이 살짝 날아갔습니다.");
                 System.out.println("[system] 호감도가 +10 되었지만 신중도가 -15 되었습니다.\n");
-                player.addAffection(10);
+                sleep(100);
+               SoundUtil.playEffect("pointUp.mp3");
+               player.addAffection(10);
             }
             case 3 -> {
                 System.out.println("[system] " + partnerName + "은(는) 감수성을 이해할 수 없어... 오히려 좋아했습니다.");
                 System.out.println("[system] 호감도 +8 이해불가 호감도 보너스가 적용되었습니다.\n");
+                sleep(100);
+                SoundUtil.playEffect("pointUp.mp3");
                 player.addAffection(8);
             }
         }
@@ -70,14 +111,26 @@ public class Stage2 {
                     case 1 -> {
                         System.out.println("[system] " + partnerName + "은(는) 반민초협회 부회장입니다.");
                         System.out.println("[system] 호감도 -50\n");
+                        sleep(100);
+                        SoundUtil.playEffect("pointDown.mp3");
+                        sleep(100);
+                        SoundUtil.playEffect("pointDown.mp3");
                         player.addAffection(-50);
                     }
                     case 2 -> {
+                        // 특별 엔딩 컷신
+                        sleep(100);
+                        SoundUtil.playEffect("pointUp.mp3");
+                        var MinchocolorMap = AccidentArt.getColorMap(AccidentArt.CharacterStyle.MINCHO);
+                        printFromResource("/arts/FNpc01.txt", MinchocolorMap);
+                        sleep(100);
+                        SoundUtil.playEffect("pointUp.mp3");
                         System.out.println("[system] " + partnerName + "은(는) 당신을 소울메이트 후보로 등록했습니다.");
                         System.out.println("[system] 호감도 +30 민초혐오공감치 +999");
                         System.out.println("[system] 비밀 선택지 ‘민초 지옥 탈출 커플 루트’가 열렸습니다.\n");
-                        player.addAffection(30);
 
+                        player.addAffection(30);
+                        
                         // 바로 Stage3으로 진입
                         Stage3 stage3 = new Stage3(player, sc, partnerName);
                         stage3.play();
@@ -95,16 +148,22 @@ public class Stage2 {
                         System.out.println("[system] " + partnerName + "은(는) 이 발언에 지나치게 공감했습니다");
                         System.out.println("[system] 호감도 +18 현실주의 커플관 공감도 상승\n");
 
+                        sleep(100);
+                        SoundUtil.playEffect("pointUp.mp3");
                         player.addAffection(18);
                     }
                     case 2 -> {
                         System.out.println("[system] " + partnerName + "은(는) '이 사람 도피형인가…?'라고 분석했습니다.");
                         System.out.println("[system] 호감도 +3 위험감지 +1\n");
+                        sleep(100);
+                        SoundUtil.playEffect("pointUp.mp3");
                         player.addAffection(3);
                     }
                     case 3 -> {
                         System.out.println("[system] " + partnerName + "은(는) 고민에 빠졌습니다.");
                         System.out.println("[system] 호감도 변화 없음\n");
+                        sleep(100);
+                        SoundUtil.playEffect("good.mp3");
                     }
                 }
             }
@@ -117,11 +176,15 @@ public class Stage2 {
                     case 1 -> {
                         System.out.println("[system] " + partnerName + "은(는) 얼굴 근육이 움직이지 않았지만 심장이 0.5초 빨라졌습니다.");
                         System.out.println("[system] 호감도 +20 야식권유도 +1\n");
+                        sleep(100);
+                        SoundUtil.playEffect("pointUp.mp3");
                         player.addAffection(20);
                     }
                     case 2 -> {
                         System.out.println("[system] " + partnerName + "은(는) 생각보다 더 진심인 당신에게 당황 + 흥미를 느꼈습니다.");
                         System.out.println("[system] 호감도 +12 주의력 집중도 +15\n");
+                        sleep(100);
+                        SoundUtil.playEffect("pointUp.mp3");
                         player.addAffection(12);
                     }
                 }
@@ -138,17 +201,23 @@ public class Stage2 {
             case 1 -> {
                 System.out.println("[system] " + partnerName + "은(는) 자신이 주인공이라니 충격에 빠졌습니다.");
                 System.out.println("[system] 호감도 +12 현실도피형 호감도 상승이 감지되었습니다.\n");
-                player.addAffection(12);
+                sleep(100);
+               SoundUtil.playEffect("pointUp.mp3");
+               player.addAffection(12);
             }
             case 2 -> {
                 System.out.println("[system] " + partnerName + "은(는) 인간미에 감동받았습니다.");
                 System.out.println("[system] 호감도 +15 몰래 우는 타입 = 내 사람 가능성 ↑\n");
-                player.addAffection(15);
+                sleep(100);
+               SoundUtil.playEffect("pointUp.mp3");
+               player.addAffection(15);
             }
             case 3 -> {
                 System.out.println("[system] " + partnerName + "은(는) 정지 후, 재부팅 중입니다.");
                 System.out.println("[system] 호감도 +20 치명타 판정\n");
-                player.addAffection(20);
+                sleep(100);
+               SoundUtil.playEffect("pointUp.mp3");
+               player.addAffection(20);
             }
         }
 
@@ -163,16 +232,22 @@ public class Stage2 {
             case 1 -> {
                 System.out.println("[system] " + partnerName + " ‘갤러리-인증커플’의 미래를 꿈꾸기 시작했습니다.");
                 System.out.println("[system] 호감도 +10 함께 걸을 감성 루트가 생성되었습니다.\n");
-                player.addAffection(10);
+                sleep(100);
+               SoundUtil.playEffect("pointUp.mp3");
+               player.addAffection(10);
             }
             case 2 -> {
                 System.out.println("[system] " + partnerName + "은(는) 체력이 안 되지만 잠깐 설렜습니다.");
                 System.out.println("[system] 호감도 +5 진심은 좋지만 관절은 안 좋습니다.\n");
-                player.addAffection(5);
+                sleep(100);
+               SoundUtil.playEffect("pointUp.mp3");
+               player.addAffection(5);
             }
             case 3 -> {
                 System.out.println("[system] " + partnerName + "은(는) 넷플릭스가 19금인지 영화감상인지 고민하기 시작했습니다.");
                 System.out.println("[system] 호감도 -10 긴급 방어모드 진입\n");
+                sleep(100);
+                SoundUtil.playEffect("pointDown.mp3");
                 player.addAffection(-10);
             }
         }
@@ -188,17 +263,23 @@ public class Stage2 {
             case 1 -> {
                 System.out.println("[system] " + partnerName + "은(는) 갤러리에 저장된 자신의 얼굴을 상상하며 살짝 무서워졌습니다");
                 System.out.println("[system] 호감도 +5 스토커 감지율 +20\n");
-                player.addAffection(5);
+                sleep(100);
+               SoundUtil.playEffect("pointUp.mp3");
+               player.addAffection(5);
             }
             case 2 -> {
                 System.out.println("[system] " + partnerName + "은(는) 감정선을 안전하게 내려놓았습니다.");
                 System.out.println("[system] 호감도 +8\n");
-                player.addAffection(8);
+                sleep(100);
+               SoundUtil.playEffect("pointUp.mp3");
+               player.addAffection(8);
             }
             case 3 -> {
                 System.out.println("[system] " + partnerName + "은(는) \"와… 이 사람... 엔딩크레딧도 같이 보겠네\" 라고 생각했습니다.");
                 System.out.println("[system] 호감도 +13\n");
-                player.addAffection(13);
+                sleep(100);
+               SoundUtil.playEffect("pointUp.mp3");
+               player.addAffection(13);
             }
         }
 
@@ -213,26 +294,40 @@ public class Stage2 {
                 System.out.println("[system] " + partnerName + "은(는) 배려심에 감동합니다.");
                 System.out.println("[system] 호감도 +20 매너남 칭호 획득!\n");
 
-                player.addAffection(20);
+                sleep(100);
+               SoundUtil.playEffect("pointUp.mp3");
+               player.addAffection(20);
             }
             case 2 -> {
                 System.out.println("[system] " + partnerName + "은(는) 웃었지만 머릿속에 드라이기 계산을 시작했습니다.");
                 System.out.println("[system] 호감도 +10 감기확률 +50% \n");
 
-                player.addAffection(10);
+                sleep(100);
+               SoundUtil.playEffect("pointUp.mp3");
+               player.addAffection(10);
             }
             case 3 -> {
                 System.out.println("[system] " + partnerName + "은(는) ‘이 사람 나보다 머리가 중요하구나’라고 인식했습니다.");
                 System.out.println("[system] 호감도 -15\n");
+                sleep(100);
+                SoundUtil.playEffect("pointDown.mp3");
                 player.addAffection(-15);
             }
         }
 
         System.out.println("===== Stage2 엔딩 =====");
         if (player.getAffection() < 40) {
+            SoundUtil.stopBGM();
+            sleep(1000);
+            SoundUtil.playEffect("12fail.mp3");
             System.out.println("[지인 엔딩] 매너는 있었지만 연애는 없었다.");
             System.out.println("얻은 호감도 : " + player.getAffection());
         } else {
+            SoundUtil.stopBGM();
+            sleep(1000);
+            SoundUtil.playEffect("run.mp3");
+            var SuccesscolorMap = FirstManArt.getColorMap(FirstManArt.CharacterStyle.EASY_MAN);
+            printFromResource("/arts/success.txt", SuccesscolorMap);
             System.out.println("[Stage2 통과!] 다음 스테이지로 진입합니다.");
             System.out.println("얻은 호감도 : " + player.getAffection());
 
@@ -256,17 +351,23 @@ public class Stage2 {
                 System.out.println("[system] " + partnerName + "은(는) 취향이 는 부분을 찾았다 출발이 좋다.");
                 System.out.println("[system] 호감도 +5\n");
 
-                player.addAffection(5);
+                sleep(100);
+               SoundUtil.playEffect("pointUp.mp3");
+               player.addAffection(5);
             }
             case 2 -> {
                 System.out.println("[system] " + partnerName + "은(는) 편안해 합니다.");
                 System.out.println("[system] 호감도 변화 없음\n");
 
+                sleep(100);
+                SoundUtil.playEffect("good.mp3");
             }
             case 3 -> {
                 System.out.println("[system] 벌써부터 삐그덕 " + partnerName + "은(는) 곤란해 합니다.");
                 System.out.println("[system] 호감도 -5\n");
 
+                sleep(100);
+                SoundUtil.playEffect("pointDown.mp3");
                 player.addAffection(-5);
             }
         }
@@ -289,17 +390,23 @@ public class Stage2 {
                         System.out.println("[system] " + partnerName + "은(는) 여행의 묘미는 맛있는 음식이라고 생각합니다.");
                         System.out.println("[system] 호감도 +5\n");
 
+                        sleep(100);
+                        SoundUtil.playEffect("pointUp.mp3");
                         player.addAffection(5);
                     }
                     case 2 -> {
                         System.out.println("[system] " + partnerName + "은(는) 일상의 감성을 공유했습니다.");
                         System.out.println("[system] 호감도 변화 없음\n");
 
+                        sleep(100);
+                        SoundUtil.playEffect("good.mp3");
                     }
                     case 3 -> {
                         System.out.println("[system] " + partnerName + "은(는) 먹는 걸 더 중요하게 생각합니다.");
                         System.out.println("[system] 호감도 -5\n");
 
+                        sleep(100);
+                        SoundUtil.playEffect("pointDown.mp3");
                         player.addAffection(-5);
                     }
                 }
@@ -314,11 +421,15 @@ public class Stage2 {
                     System.out.println("[system] " + partnerName + "은(는) 축제의 분위기를 좋아합니다.");
                     System.out.println("[system] 호감도 +5\n");
 
+                    sleep(100);
+                    SoundUtil.playEffect("pointUp.mp3");
                     player.addAffection(5);
                 } else {
                     System.out.println("[system] " + partnerName + "은(는) 고개를 끄덕였습니다.");
                     System.out.println("[system] 호감도 변화 없음\n");
 
+                    sleep(100);
+                    SoundUtil.playEffect("good.mp3");
                 }
             }
             case 3 -> {
@@ -331,16 +442,22 @@ public class Stage2 {
                     System.out.println("[system] " + partnerName + "은(는) 공통 취미에 관심을 보입니다.");
                     System.out.println("[system] 호감도 +5\n");
 
+                    sleep(100);
+                    SoundUtil.playEffect("pointUp.mp3");
                     player.addAffection(5);
                 } else {
                     System.out.println("[system] " + partnerName + "은(는) 미소를 지었습니다.");
                     System.out.println("[system] 호감도 변화 없음\n");
 
+                    sleep(100);
+                    SoundUtil.playEffect("good.mp3");
                 }
             }
         }
 
         // 돌발 이벤트
+        var KimchicolorMap = FirstManArt.getColorMap(FirstManArt.CharacterStyle.NORMAL_MAN);
+        printFromResource("/arts/MNpc0.txt", KimchicolorMap);
         System.out.println("💥[system] 상대의 음식에서 소스가 옷에 튀었다!");
         System.out.println("  1. 괜찮아요. 옷은 더러워질 수도 있는 거잖아요");
         System.out.println("  2. 빨면 되죠");
@@ -351,27 +468,39 @@ public class Stage2 {
                 System.out.println("[system] " + partnerName + "은(는) 감동했습니다.");
                 System.out.println("[system] 호감도 +8\n");
 
+                sleep(100);
+                SoundUtil.playEffect("pointUp.mp3");
                 player.addAffection(8);
             }
             case 2 -> {
                 System.out.println("[system] " + partnerName + "은(는) 안심했습니다.");
                 System.out.println("[system] 호감도 변화 없음\n");
 
+                sleep(100);
+                SoundUtil.playEffect("good.mp3");
             }
             case 3 -> {
                 System.out.println("[system] " + partnerName + "은(는) 미안하지만 조금 띠꺼워 합니다.");
                 System.out.println("[system] 호감도 -8\n");
 
+                sleep(100);
+                SoundUtil.playEffect("pointDown.mp3");
                 player.addAffection(-8);
             }
         }
 
         // 엔딩
+        SoundUtil.stopBGM();
         System.out.println("===== Stage2 엔딩 =====");
         if (player.getAffection() < 40) {
+            sleep(1000);
+            SoundUtil.playEffect("loose.mp3");
             System.out.println("[지인 엔딩] 매너는 있었지만 연애는 없었다.");
             System.out.println("호감도 : " + player.getAffection());
         } else {
+            sleep(1000);
+            SoundUtil.playEffect("run.mp3");
+            printStageClear();
             System.out.println("[Stage2 통과!] 다음 스테이지로 진입합니다.");
             System.out.println("호감도 : " + player.getAffection());
         }
@@ -386,7 +515,15 @@ public class Stage2 {
                 num = Integer.parseInt(sc.nextLine());
                 if (num >= min && num <= max) return num;
             } catch (Exception ignored) {}
+            SoundUtil.playEffect("no.mp3");
             System.out.println("잘못된 입력입니다. 다시 선택하세요.");
         }
+    }
+
+    // 소리 출력 대기시간 설정 함수
+    private static void sleep(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException ignored) {}
     }
 }

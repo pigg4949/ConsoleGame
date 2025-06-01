@@ -1,11 +1,20 @@
 package game;
 
+import util.ColorAsciiUtil.*;
+import util.SoundUtil;
+import util.color.AccidentArt;
+import util.color.FirstManArt;
+import util.color.ThirdWomanArt;
+
 import java.util.Scanner;
+
+import static util.ColorAsciiUtil.TextColorUtil.printFromResource;
+import static util.ColorAsciiUtil.printGameOver;
+import static util.ColorAsciiUtil.printStageClear;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
         // 1) 이름 입력
         String name;
         while (true) {
@@ -36,6 +45,7 @@ public class Main {
         Player player = new Player(name, gender);
 
         // 4) Stage1 실행
+
         Stage1 stage1 = new Stage1(player, sc);
         Stage1.Result result1 = stage1.play();
         // result1.partnerName, result1.affection 반영
@@ -43,6 +53,7 @@ public class Main {
         String partnerName = result1.partnerName;
 
         if (player.getAffection() < 20) {
+            printGameOver();
             System.out.println("\n[GAME OVER] Stage1에서 실패했습니다.");
             sc.close();
             return;
@@ -52,6 +63,7 @@ public class Main {
         Stage2 stage2 = new Stage2(player, sc, partnerName);
         stage2.play();
         if (player.getAffection() < 40) {
+            printGameOver();
             System.out.println("\n[GAME OVER] Stage2에서 실패했습니다.");
             sc.close();
             return;
