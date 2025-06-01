@@ -7,6 +7,7 @@ public class Stage2 {
     private Scanner sc;
     private String partnerName;
     private GameTools GT = new GameTools();
+    private DBHandler DB = new DBHandler();
 
     public Stage2(Player player) {
         this.player = player;
@@ -236,6 +237,8 @@ public class Stage2 {
         } else {
             System.out.println("[Stage2 통과!] 다음 스테이지로 진입합니다.");
             System.out.println("얻은 호감도 : " + player.getAffection());
+            player.setClearStage(2);
+            DB.updatePlayer(player.getPlayerName(), player.getGender(),player.getAffection(), player.getPartnerName(), player.getClearStage());
 
         }
         System.out.println("=========================================================\n");
@@ -372,9 +375,12 @@ public class Stage2 {
         if (player.getAffection() < 40) {
             System.out.println("[지인 엔딩] 매너는 있었지만 연애는 없었다.");
             System.out.println("호감도 : " + player.getAffection());
+
         } else {
             System.out.println("[Stage2 통과!] 다음 스테이지로 진입합니다.");
             System.out.println("호감도 : " + player.getAffection());
+            player.setClearStage(2);
+            DB.updatePlayer(player.getPlayerName(), player.getGender(),player.getAffection(), player.getPartnerName(), player.getClearStage());
         }
         System.out.println("=========================================================\n");
     }

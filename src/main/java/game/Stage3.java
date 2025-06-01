@@ -7,6 +7,7 @@ public class Stage3 {
     private Player player;
     private Scanner sc;
     private GameTools GT = new GameTools();
+    private DBHandler DB = new DBHandler();
 
     public Stage3(Player player) {
         this.player = player;
@@ -211,6 +212,8 @@ public class Stage3 {
             System.out.println("남사친 엔딩: 좋은 친구로 남고 싶어요.");
         } else {
             System.out.println("남친 엔딩: 해피 엔딩! 다음 주말에 또 만날래요?");
+            player.setClearStage(3);
+            DB.updatePlayer(player.getPlayerName(), player.getGender(),player.getAffection(), player.getPartnerName(), player.getClearStage());
         }
         System.out.println("=========================\n");
     }
@@ -358,6 +361,8 @@ public class Stage3 {
             System.out.println("여사친 엔딩: 좋은 친구로 남고 싶어요.");
         } else {
             System.out.println("여친 엔딩: 해피 엔딩! 다음 주말에 또 만날래요?");
+            player.setClearStage(3);
+            DB.updatePlayer(player.getPlayerName(), player.getGender(),player.getAffection(), player.getPartnerName(), player.getClearStage());
         }
         System.out.println("=========================\n");
     }

@@ -5,17 +5,22 @@ import java.util.Scanner;
 public class Player {
     private String playerName;
     private String gender;
-    private int affection = 0;
+    private int affection;
     private String partnerName;
+    private int clearStage;
 
-    public Player(String name, String gender) {
+    public Player(String name, String gender, int affection, int clearStage) {
         this.playerName = name;
         this.gender = gender;
+        this.affection = affection;
+        this.clearStage = clearStage;
     }
 
     public static Player inputPlayer() {
         Scanner scanner = new Scanner(System.in);
         String name, gender;
+        int affection = 0;
+        int clearStage = 0;
 
         while (true) {
             System.out.print("이름을 입력하세요: ");
@@ -38,7 +43,7 @@ public class Player {
             }
         }
 
-        return new Player(name, gender);
+        return new Player(name, gender, affection, clearStage);
     }
 
     // === Getter & Setter ===
@@ -72,5 +77,17 @@ public class Player {
 
     public void setPartnerName(String partnerName) {
         this.partnerName = partnerName;
+    }
+
+    public int getClearStage() {
+        return clearStage;
+    }
+
+    public void setClearStage(int clearStage) {
+        this.clearStage = clearStage;
+    }
+
+    public String toString() {
+        return "playerName: " + playerName + "gender: " + gender + "affection: " + affection + "clearStage: " + clearStage;
     }
 }

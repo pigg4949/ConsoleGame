@@ -4,19 +4,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Stage1 {
-//    public static class Result {
-//        public final String partnerName;
-//        public final int affection;
-//        public Result(String partnerName, int affection) {
-//            this.partnerName = partnerName;
-//            this.affection = affection;
-//        }
-//    }
 
     private final Player player;
     private Scanner sc = new Scanner(System.in);
     private final Random rand = new Random();
     private GameTools GT = new GameTools();
+    private DBHandler DB = new DBHandler();
 
     public Stage1(Player player) {
         this.player = player;
@@ -360,10 +353,14 @@ public class Stage1 {
 
         // 엔딩 분기
         if (player.getAffection() < 20)
-            System.out.println("[엔딩] 호감도가 너무 낮아 관계가 이어지지 않습니다.");
-        else
-            System.out.println("[엔딩] 다음 스테이지로 진입합니다!");
+        {System.out.println("[엔딩] 호감도가 너무 낮아 관계가 이어지지 않습니다.");
 
+        }
+        else{
+            System.out.println("[엔딩] 다음 스테이지로 진입합니다!");
+            player.setClearStage(1);
+            DB.savePlayer(player.getPlayerName(), player.getGender(),player.getAffection(), player.getPartnerName(), player.getClearStage());
+        }
         return player;
     }
 }
