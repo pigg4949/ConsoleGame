@@ -7,6 +7,7 @@ public class Stage2 {
     private Scanner sc;
     private String partnerName;
     private GameTools GT = new GameTools();
+    private DBHandler DB = new DBHandler();
 
     public Stage2(Player player) {
         this.player = player;
@@ -38,18 +39,17 @@ public class Stage2 {
         switch (input) {
             case 1 -> {
                 System.out.println("[system] " + partnerName + "은(는) '이 사람 자기랑 영화도 나눠 못 보는 사람일지도…?'라는 생각에 혼란을 느꼈습니다.");
-                System.out.println("[system] 호감도 +5 자기애에는 약하지만 감명받았습니다.\n");
-                player.addAffection(5);
+                System.out.println("[system] 호감도의 변화는 없었다.\n");
             }
             case 2 -> {
                 System.out.println("[system] " + partnerName + "은(는) 갑작스러운 스킨십 언급에 멘탈이 살짝 날아갔습니다.");
-                System.out.println("[system] 호감도가 +10 되었지만 신중도가 -15 되었습니다.\n");
-                player.addAffection(10);
+                System.out.println("[system] 호감도가 +5 되었지만 신중도가 -15 되었습니다.\n");
+                player.addAffection(5);
             }
             case 3 -> {
-                System.out.println("[system] " + partnerName + "은(는) 감수성을 이해할 수 없어... 오히려 좋아했습니다.");
-                System.out.println("[system] 호감도 +8 이해불가 호감도 보너스가 적용되었습니다.\n");
-                player.addAffection(8);
+                System.out.println("[system] " + partnerName + "은(는) 감수성을 이해할 수 없어... ");
+                System.out.println("[system] 호감도 -10 이해불가, 광고에는 슬픈내용이 없었다...\n");
+                player.addAffection(-10);
             }
         }
 
@@ -94,14 +94,14 @@ public class Stage2 {
                 switch (sub) {
                     case 1 -> {
                         System.out.println("[system] " + partnerName + "은(는) 이 발언에 지나치게 공감했습니다");
-                        System.out.println("[system] 호감도 +18 현실주의 커플관 공감도 상승\n");
+                        System.out.println("[system] 호감도 +5 현실주의 커플관 공감도 상승\n");
 
-                        player.addAffection(18);
+                        player.addAffection(5);
                     }
                     case 2 -> {
                         System.out.println("[system] " + partnerName + "은(는) '이 사람 도피형인가…?'라고 분석했습니다.");
-                        System.out.println("[system] 호감도 +3 위험감지 +1\n");
-                        player.addAffection(3);
+                        System.out.println("[system] 호감도 -10 위험감지 +1\n");
+                        player.addAffection(-10);
                     }
                     case 3 -> {
                         System.out.println("[system] " + partnerName + "은(는) 고민에 빠졌습니다.");
@@ -117,13 +117,13 @@ public class Stage2 {
                 switch (sub) {
                     case 1 -> {
                         System.out.println("[system] " + partnerName + "은(는) 얼굴 근육이 움직이지 않았지만 심장이 0.5초 빨라졌습니다.");
-                        System.out.println("[system] 호감도 +20 야식권유도 +1\n");
-                        player.addAffection(20);
+                        System.out.println("[system] 호감도 +5 야식권유도 +1\n");
+                        player.addAffection(5);
                     }
                     case 2 -> {
-                        System.out.println("[system] " + partnerName + "은(는) 생각보다 더 진심인 당신에게 당황 + 흥미를 느꼈습니다.");
-                        System.out.println("[system] 호감도 +12 주의력 집중도 +15\n");
-                        player.addAffection(12);
+                        System.out.println("[system] " + partnerName + "은(는) 생각보다 더 진심인 당신에게 당황, 살짝 손을 숨기는듯 하다..");
+                        System.out.println("[system] 호감도 -10 주의력 집중도 +15\n");
+                        player.addAffection(-10);
                     }
                 }
             }
@@ -137,19 +137,18 @@ public class Stage2 {
         input = GT.getInput(1, 3);
         switch (input) {
             case 1 -> {
-                System.out.println("[system] " + partnerName + "은(는) 자신이 주인공이라니 충격에 빠졌습니다.");
-                System.out.println("[system] 호감도 +12 현실도피형 호감도 상승이 감지되었습니다.\n");
-                player.addAffection(12);
+                System.out.println("[system] " + partnerName + "은(는) 자신이 주인공이라니 충격에 빠졌습니다.. (방금영화는 여주가 죽는 영화였다...");
+                System.out.println("[system] 호감도 -10, 살기가 감지되었습니다.\n");
+                player.addAffection(-10);
             }
             case 2 -> {
-                System.out.println("[system] " + partnerName + "은(는) 인간미에 감동받았습니다.");
-                System.out.println("[system] 호감도 +15 몰래 우는 타입 = 내 사람 가능성 ↑\n");
-                player.addAffection(15);
+                System.out.println("[system] " + partnerName + "은(는) 인간미에 아주 살짝 감동받았습니다.");
+                System.out.println("[system] 호감도 변화 없음\n");
             }
             case 3 -> {
                 System.out.println("[system] " + partnerName + "은(는) 정지 후, 재부팅 중입니다.");
-                System.out.println("[system] 호감도 +20 치명타 판정\n");
-                player.addAffection(20);
+                System.out.println("[system] 호감도 +15 치명타 판정\n");
+                player.addAffection(15);
             }
         }
 
@@ -163,13 +162,13 @@ public class Stage2 {
         switch (input) {
             case 1 -> {
                 System.out.println("[system] " + partnerName + " ‘갤러리-인증커플’의 미래를 꿈꾸기 시작했습니다.");
-                System.out.println("[system] 호감도 +10 함께 걸을 감성 루트가 생성되었습니다.\n");
-                player.addAffection(10);
+                System.out.println("[system] 호감도 +5 함께 걸을 감성 루트가 생성되었습니다.\n");
+                player.addAffection(5);
             }
             case 2 -> {
                 System.out.println("[system] " + partnerName + "은(는) 체력이 안 되지만 잠깐 설렜습니다.");
-                System.out.println("[system] 호감도 +5 진심은 좋지만 관절은 안 좋습니다.\n");
-                player.addAffection(5);
+                System.out.println("[system]  진심은 좋지만 관절은 안 좋습니다.\n");
+                System.out.println("[system] 호감도 변화 없음");
             }
             case 3 -> {
                 System.out.println("[system] " + partnerName + "은(는) 넷플릭스가 19금인지 영화감상인지 고민하기 시작했습니다.");
@@ -188,18 +187,17 @@ public class Stage2 {
         switch (input) {
             case 1 -> {
                 System.out.println("[system] " + partnerName + "은(는) 갤러리에 저장된 자신의 얼굴을 상상하며 살짝 무서워졌습니다");
-                System.out.println("[system] 호감도 +5 스토커 감지율 +20\n");
-                player.addAffection(5);
+                System.out.println("[system] 호감도 -10 스토커 감지율 +20\n");
+                player.addAffection(-10);
             }
             case 2 -> {
                 System.out.println("[system] " + partnerName + "은(는) 감정선을 안전하게 내려놓았습니다.");
-                System.out.println("[system] 호감도 +8\n");
-                player.addAffection(8);
+                System.out.println("[system] 호감도 +5\n");
+                player.addAffection(5);
             }
             case 3 -> {
                 System.out.println("[system] " + partnerName + "은(는) \"와… 이 사람... 엔딩크레딧도 같이 보겠네\" 라고 생각했습니다.");
-                System.out.println("[system] 호감도 +13\n");
-                player.addAffection(13);
+                System.out.println("[system] 호감도 변화 없음");
             }
         }
 
@@ -236,6 +234,8 @@ public class Stage2 {
         } else {
             System.out.println("[Stage2 통과!] 다음 스테이지로 진입합니다.");
             System.out.println("얻은 호감도 : " + player.getAffection());
+            player.setClearStage(2);
+            DB.updatePlayer(player.getPlayerName(), player.getGender(),player.getAffection(), player.getPartnerName(), player.getClearStage());
 
         }
         System.out.println("=========================================================\n");
@@ -266,9 +266,9 @@ public class Stage2 {
             }
             case 3 -> {
                 System.out.println("[system] 벌써부터 삐그덕 " + partnerName + "은(는) 곤란해 합니다.");
-                System.out.println("[system] 호감도 -5\n");
+                System.out.println("[system] 호감도 -10\n");
 
-                player.addAffection(-5);
+                player.addAffection(-10);
             }
         }
 
@@ -299,9 +299,9 @@ public class Stage2 {
                     }
                     case 3 -> {
                         System.out.println("[system] " + partnerName + "은(는) 먹는 걸 더 중요하게 생각합니다.");
-                        System.out.println("[system] 호감도 -5\n");
+                        System.out.println("[system] 호감도 -10\n");
 
-                        player.addAffection(-5);
+                        player.addAffection(-10);
                     }
                 }
             }
@@ -350,9 +350,9 @@ public class Stage2 {
         switch (input) {
             case 1 -> {
                 System.out.println("[system] " + partnerName + "은(는) 감동했습니다.");
-                System.out.println("[system] 호감도 +8\n");
+                System.out.println("[system] 호감도 +5\n");
 
-                player.addAffection(8);
+                player.addAffection(5);
             }
             case 2 -> {
                 System.out.println("[system] " + partnerName + "은(는) 안심했습니다.");
@@ -361,9 +361,9 @@ public class Stage2 {
             }
             case 3 -> {
                 System.out.println("[system] " + partnerName + "은(는) 미안하지만 조금 띠꺼워 합니다.");
-                System.out.println("[system] 호감도 -8\n");
+                System.out.println("[system] 호감도 -10\n");
 
-                player.addAffection(-8);
+                player.addAffection(-10);
             }
         }
 
@@ -372,9 +372,12 @@ public class Stage2 {
         if (player.getAffection() < 40) {
             System.out.println("[지인 엔딩] 매너는 있었지만 연애는 없었다.");
             System.out.println("호감도 : " + player.getAffection());
+
         } else {
             System.out.println("[Stage2 통과!] 다음 스테이지로 진입합니다.");
             System.out.println("호감도 : " + player.getAffection());
+            player.setClearStage(2);
+            DB.updatePlayer(player.getPlayerName(), player.getGender(),player.getAffection(), player.getPartnerName(), player.getClearStage());
         }
         System.out.println("=========================================================\n");
     }
