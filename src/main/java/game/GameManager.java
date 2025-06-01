@@ -9,19 +9,20 @@ public class GameManager {
     public void run() {
         player = Player.inputPlayer(); // 생성
 
-        if (checkPreviousProgress()) {
-            if (!askToSkip()) {
-                runStage1();
-            }
-        } else {
-            runStage1();
-        }
+//        if (checkPreviousProgress()) {
+//            if (!askToSkip()) {
+//                runStage1();
+//            }
+//        } else {
+//            runStage1();
+//        }
+        runStage1();
 
         runStage2();
 
         runStage3();
 
-        showRanking();
+//        showRanking();
     }
 
 
@@ -38,20 +39,32 @@ public class GameManager {
 
     private void runStage1() {
         Stage1 stage = new Stage1(player);
-        stage.start();
+        player = stage.play();
     }
 
     private void runStage2() {
         Stage2 stage2 = new Stage2(player);
-        stage2.play();
+        player = stage2.play();
     }
 
     private void runStage3() {
         Stage3 stage = new Stage3(player);
-        stage.start;
+        stage.play();
     }
 
-    private void showRanking() {
-        RankingManager.showRanking();
+    public int getInput(int min, int max) {
+        while (true) {
+            System.out.printf("선택(%d~%d): ", min, max);
+            int n = scanner.nextInt();
+            if (n >= min && n <= max){
+                return n;
+            }
+            else{
+                System.out.println("잘못된 입력입니다. 다시 선택하세요.3");
+            }
+        }
     }
+//    private void showRanking() {
+//        RankingManager.showRanking();
+//    }
 }

@@ -54,8 +54,12 @@ public class Player {
         return affection;
     }
 
-    public void increaseAffection(int amount) {
+    public void addAffection(int amount) {
         affection += amount;
+    }
+
+    public void setAffection(int amount) {
+        affection = amount;
     }
 
     public void resetAffection() {
